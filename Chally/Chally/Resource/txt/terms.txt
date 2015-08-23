@@ -1,0 +1,35 @@
+1. Cost of Participation
+DIRECTV Mobile Account Management services require no purchase or fee for participation. Carrier message and data rates may apply to each message sent through automated dialing equipment and/or received from the participant.
+
+2. Confirmation and Opt Out
+You understand and agree that you will receive a confirmation text message for each text message sent to the DIRECTV Mobile Account Management short code.  Such confirmations may offer you the opportunity to opt-in to other DIRECTV Mobile Account Management services. You will not, however, be opted into other DIRECTV Mobile Account Management services without your permission. You may opt out of receiving DIRECTV Mobile Account Management Text Messages by replying “STOP”, “END”, “QUIT”, “CANCEL" or "UNSUBSCRIBE". If you experience any problems with opting out of DIRECTV Mobile Account Management Text Messaging or if you need help or additional information related to DIRECTV Mobile Account Management Text Messages, please text “HELP” to short code 21880. If you opt out of DIRECTV Mobile Account Management Text Messaging, you are only opting out of  receiving mobile alerts associated with short code 21880. If you participate in other DIRECTV text messaging services, including the DIRECTV Mobile/Marketing Alerts Text Messaging service from 223322, you will continue to receive those alerts (unless and until you reply “STOP” to the short code associated with the separate text messaging service). You will also continue to receive telephone calls to wireless telephone numbers provided by you as contact information on your account.
+
+3. User Conduct
+You agree not to send or otherwise make available content that is unlawful, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, invasive of another's privacy, or contains hate speech.  You acknowledge that DIRECTV may or may not pre-screen text message content you provide, but shall have the right, without obligation and in its sole discretion, to pre-screen, refuse, or remove any content you make available, including content that violates this section. By opting in to any text messaging service from a cellular telephone number, you are representing to DIRECTV that the cellular telephone line from which you have opted-in is one for which you can provide consent to receive text messages from DIRECTV. You agree that if and before you disconnect that phone line, you will send a STOP ALL message to each DIRECTV short code you have opted in to in order to stop future text messages from being sent to that number.
+
+4. Privacy Policy
+For additional information regarding our use of information collected through DIRECTV text messaging services, please refer to our Privacy Policy.
+
+5. No Guarantee
+DIRECTV is not responsible for incomplete, lost, late, or misdirected messages, including (but not limited to) undelivered messages resulting from any form of filtering by your mobile carrier or service provider, and cannot guarantee that all messages received by DIRECTV for messaging campaigns will be broadcast by DIRECTV.
+
+6. United States Only
+DIRECTV Mobile Account Management alerts are currently available only to residents of the United States. You understand and acknowledge that you may not sign up for, access, or attempt to access or use the DIRECTV Mobile Account Management Services from countries outside of the United States.
+
+7. DISCLAIMER OF WARRANTIES
+YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR PARTICIPATION IN DIRECTV’S MOBILE ACCOUNT MANAGEMENT CAMPAIGN, IS AT YOUR SOLE RISK. THE SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. DIRECTV AND ITS SUBSIDIARIES, AFFILIATES, OFFICERS, AGENTS, EMPLOYEES, PARTNERS, AND LICENSORS EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. DIRECTV, ITS SUBSIDIARIES, AFFILIATES, OFFICERS, AGENTS, EMPLOYEES, PARTNERS, AND LICENSORS MAKE NO WARRANTY THAT (A) THE SERVICES WILL MEET YOUR REQUIREMENTS; (B) THE SERVICES WILL BE UNINTERRRUPTED, TIMELY, SECURE, OR ERROR-FREE; OR (C) THE RESULTS THAT MAY BE OBTAINED FROM THE USE OF THE SERVICES WILL BE ACCURATE OR RELIABLE.
+
+8. LIMITATION ON LIABILITY
+YOU EXPRESSLY UNDERSTAND AND AGREE THAT DIRECTV, ITS SUBSIDIARIES, AFFILIATES, OFFICERS, AGENTS, EMPLOYEES, PARTNERS, AND LICENSORS SHALL NOT BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES, EVEN IF DIRECTV HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, RESULTING FROM THE USE OR THE INABILITY TO USE THE SERVICES, UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR TRANSMISSIONS OR DATA, STATEMENTS OR CONDUCT OF ANY THIRD PARTY ON THE SERVICES, OR ANY OTHER MATTER RELATING TO THE SERVICES.  SOME STATES OR JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL, CONSEQUENTIAL OR SPECIAL DAMAGES, SO THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU.
+
+9. Indemnification
+You agree to indemnify and hold harmless DIRECTV, its subsidiaries, affiliates, officers, agents, employees, partners, and licensors, from any claim or demand, including reasonable attorneys' fees, made by any third party due to or arising out of your use of  DIRECTV Mobile Account Management alerts (such as text message content you submit, post, transmit, or otherwise send to DIRECTV), including (but not limited to) claims that your content is tortious, defamatory, invasive of privacy, or violates the intellectual property rights of another.
+
+10. Termination
+DIRECTV reserves the right, in its sole discretion, to cancel or suspend the DIRECTV Mobile Account Management Text Messaging service, in whole or in part, for any reason, with or without notice to you.
+
+11. Applicable Law and Disputes
+These Terms and Conditions and our relationship with you regarding DIRECTV Mobile Account Management Alerts are governed by the DIRECTV Customer Agreement and expressly include Section 9, Resolving Disputes, which requires individual arbitration of disputes that cannot be informally resolved, or an individual action in small claims court in lieu of arbitration.
+
+12. Other
+If any part of these Terms and Conditions is held invalid or unenforceable, that portion shall be construed in a manner consistent with applicable law to reflect, as nearly as possible, the original intentions of these Terms and Conditions, and the remaining portions shall remain in full force and effect.

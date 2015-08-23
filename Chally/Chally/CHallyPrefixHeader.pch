@@ -1,0 +1,57 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "UIImageView+AFNetworking.h"
+#import "UIButton+AFNetworking.h"
+#import "UIHelper.h"
+#import "APIHelper.h"
+#import "Utils.h"
+#import "BaseViewController.h"
+#import "PureLayout.h"
+#import "SVProgressHUD.h"
+#import "Settings.h"
+#endif
+
+#define GooglePlusClientId @"516275925630-s01i9vbc1dm163rkmtoddp5cuab2fl9l.apps.googleusercontent.com"
+
+#define UserImageSize (80.f)
+#define dDeviceOrientation [[UIDevice currentDevice] orientation]
+#define isPortrait  UIDeviceOrientationIsPortrait(dDeviceOrientation)
+#define isLandscape UIDeviceOrientationIsLandscape(dDeviceOrientation)
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+//Constants
+#define IPHONE_5_4_SCALE        568  / 736
+#define IPHONE_6_SCALE          667  / 736
+#define IPAD_SCALE              1024 / 736
+#define FEED_LIMIT              @"10"
+#define COMMENTS_LIMIT          @"10"
+#define FEED_OFFSET             10
+
+//Device and System Version
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_4 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 480.0f)
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPHONE_6 (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0)
+#define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0)
+#define IS_IOS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
+#define IS_PORTRAIT (UIDeviceOrientationIsPortrait(self.interfaceOrientation))
+#define NULL_TO_NIL(obj)        ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? nil : obj; })
