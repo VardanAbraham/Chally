@@ -96,11 +96,12 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = locations.lastObject;
-    NSString *lng = [[[NSNumber alloc] initWithDouble:location.coordinate.longitude] stringValue];
-    NSString *lat = [[[NSNumber alloc] initWithDouble:location.coordinate.latitude] stringValue];
+    NSNumber *lng = [[NSNumber alloc] initWithDouble:location.coordinate.longitude];
+    NSNumber *lat = [[NSNumber alloc] initWithDouble:location.coordinate.latitude];
     
     if ([lat doubleValue] != 0 && [lng doubleValue] != 0) {
-        
+        [Utils saveUserLat:@44];
+        [Utils saveUserLng:@44];
     }
 }
 

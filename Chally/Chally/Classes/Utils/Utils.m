@@ -31,134 +31,6 @@
     return nil;
 }
 
-+ (void)saveAuthToken:(NSString*)value
-{
-    [self saveToUserDefaultsWithKey:@"auth" value:value];
-}
-
-+ (void)saveDeviceType:(NSString*)value
-{
-    [self saveToUserDefaultsWithKey:@"deviceType" value:value];
-}
-
-+ (void)saveFriendsUserIDs:(NSMutableArray*)userIDs
-{
-    [self saveToUserDefaultsWithKey:@"userIDs" value:userIDs];
-}
-
-+ (void)saveTrashHiveID:(NSString*)trashHiveID
-{
-    [self saveToUserDefaultsWithKey:@"trashHiveID" value:trashHiveID];
-}
-
-+ (void)saveVideoHiveID:(NSString*)videoHiveID
-{
-    [self saveToUserDefaultsWithKey:@"videoHiveID" value:videoHiveID];
-}
-
-+ (void)saveAlbumHiveID:(NSString*)albumHiveID
-{
-    [self saveToUserDefaultsWithKey:@"albumHiveID" value:albumHiveID];
-}
-
-+ (void)savePhotoHiveID:(NSString*)photoHiveID
-{
-    [self saveToUserDefaultsWithKey:@"photoHiveID" value:photoHiveID];
-}
-
-+ (void)saveDocumentsHiveID:(NSString*)documentsHiveID
-{
-    [self saveToUserDefaultsWithKey:@"documentsHiveID" value:documentsHiveID];
-}
-
-+ (void)saveFriendsList:(NSMutableArray*)friendsList
-{
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:friendsList];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:encodedObject forKey:@"friendsList"];
-    [defaults synchronize];
-}
-
-+ (NSMutableArray*)getFriendsList
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *encodedObject = [defaults objectForKey:@"friendsList"];
-    NSMutableArray *friendsList = [NSKeyedUnarchiver unarchiveObjectWithData:encodedObject];
-    return friendsList;
-}
-
-+ (NSMutableArray*)getFriendsUserIDs
-{
-    return [self readFromUserDefaults:@"userIDs"];
-}
-
-+ (NSString*)getAuthToken
-{
-    return [self readFromUserDefaults:@"auth"];
-}
-
-+ (NSString*)getDeviceType
-{
-    return [self readFromUserDefaults:@"deviceType"];
-}
-
-+ (NSString*)getTrashHiveID
-{
-    return [self readFromUserDefaults:@"trashHiveID"];
-}
-
-+ (NSString*)getVideoHiveID
-{
-    return [self readFromUserDefaults:@"videoHiveID"];
- }
-
-+ (NSString*)getAlbumHiveID
-{
-    return [self readFromUserDefaults:@"albumHiveID"];
-}
-
-+ (NSString*)getPhotoHiveID
-{
-    return [self readFromUserDefaults:@"photoHiveID"]; 
-}
-
-+ (NSString*)getDocumentsHiveID
-{
-    return [self readFromUserDefaults:@"documentsHiveID"];
-}
-
-+ (void)saveCutedFilesIDs:(NSMutableArray*)hiveIDs
-{
-    if ([self getCutedFilesIDs]) {
-        NSMutableArray *mainIDs = [NSMutableArray arrayWithArray:[self getCutedFilesIDs]];
-        [mainIDs addObjectsFromArray:hiveIDs];
-        [self saveToUserDefaultsWithKey:@"cutedFilesIDs" value:mainIDs];
-    } else {
-        [self saveToUserDefaultsWithKey:@"cutedFilesIDs" value:hiveIDs];
-    }
-}
-
-+ (void)saveCopiedFilesIDs:(NSMutableArray*)hiveIDs
-{
-    if ([self getCopiedFilesIDs]) {
-        NSMutableArray *mainIDs = [NSMutableArray arrayWithArray:[self getCopiedFilesIDs]];
-        [mainIDs addObjectsFromArray:hiveIDs];
-        [self saveToUserDefaultsWithKey:@"copiedFilesIDs" value:mainIDs];
-    } else {
-        [self saveToUserDefaultsWithKey:@"copiedFilesIDs" value:hiveIDs];
-    }
-}
-
-+ (NSMutableArray*)getCutedFilesIDs
-{
-    return [self readFromUserDefaults:@"cutedFilesIDs"];
-}
-
-+ (NSMutableArray*)getCopiedFilesIDs
-{
-    return [self readFromUserDefaults:@"copiedFilesIDs"];
-}
-
 + (BOOL)isValidEmail:(NSString*) emailString
 {
     if([emailString length]==0){
@@ -175,18 +47,6 @@
     } else {
         return YES;
     }
-}
-
-+ (BOOL)isUserFriend:(int)userID
-{
-    BOOL returnedValue = NO;
-    NSMutableArray *userIDs = [self getFriendsUserIDs];
-    for (int i = 0; i <[userIDs count]; i++) {
-        if (userID == [[userIDs objectAtIndex:i] integerValue]) {
-            returnedValue = YES;
-        }
-    }
-    return returnedValue;
 }
 
 + (void)setUserRegistered:(NSInteger)value
@@ -274,5 +134,26 @@
     
     return isValid;
 }
+
++ (void)saveUserLat:(NSNumber *)lat
+{
+    [self saveToUserDefaultsWithKey:@"lat" value:lat];
+}
+
++ (void)saveUserLng:(NSNumber *)lng
+{
+    [self saveToUserDefaultsWithKey:@"lng" value:lng];
+}
+
++ (NSNumber *)getUserLat
+{
+    return [self readFromUserDefaults:@"lat"];
+}
+
++ (NSNumber *)getUserLng
+{
+    return [self readFromUserDefaults:@"lng"];
+}
+
 
 @end

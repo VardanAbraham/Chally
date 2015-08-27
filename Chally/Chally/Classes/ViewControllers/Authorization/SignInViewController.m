@@ -176,7 +176,6 @@
 {
     if (!_infoLabel) {
         _infoLabel = [UILabel newAutoLayoutView];
-        [_infoLabel setTextColor:GRAY_17];
         [_infoLabel setText:@"Don't have an account?"];
         [_infoLabel setFont:SITEXTFONT];
     }

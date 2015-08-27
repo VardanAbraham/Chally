@@ -28,6 +28,14 @@
     [self addUIObjects];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self setMapCameraSettings];
+    [self showUserMarker];
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -54,10 +62,27 @@
     [self.closeButton autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:MC_INSET];
     [self.closeButton autoSetDimensionsToSize:CGSizeMake(MC_BUTTON_SIZE, MC_BUTTON_SIZE)];
     
-   self.notificationOffsetConstraints = [self.notificationLabel autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:self.mapView withOffset:-50];
+   self.notificationOffsetConstraints = [self.notificationLabel autoPinEdge:ALEdgeBottom toEdge:ALEdgeTop ofView:self.mapView withOffset:MC_ANIM_DISTANCE*-1];
     [self.notificationLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:MC_INSET];
     [self.notificationLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:MC_INSET];
     [self.notificationLabel autoSetDimension:ALDimensionHeight toSize:MC_NOTIFICATION_HEIGHT];
+    [self.notificationLabel setFont:OPENSANS_LIGHT];
+}
+
+- (void)setMapCameraSettings
+{
+    CLLocationCoordinate2D userLocation = CLLocationCoordinate2DMake([[Utils getUserLat] doubleValue], [[Utils getUserLng] doubleValue]);
+    [self.mapView animateToLocation:userLocation];
+    [self.mapView animateToZoom:14];
+}
+
+- (void)showUserMarker
+{
+    GMSMarker *marker = [GMSMarker new];
+    CLLocationCoordinate2D userLocation = CLLocationCoordinate2DMake([[Utils getUserLat] doubleValue], [[Utils getUserLng] doubleValue]);
+    [marker setPosition:userLocation];
+    [marker setDraggable:YES];
+    marker.map = self.mapView;
 }
 
 - (void)showNotificationLabel
@@ -86,12 +111,9 @@
 
 #pragma mark - MapView Delegates
 
-- (void)mapView:(GMSMapView *)googleMapView
-didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
+- (void)mapView:(GMSMapView *)mapView didEndDraggingMarker:(GMSMarker *)marker
 {
-    GMSMarker *marker = [GMSMarker new];
-    marker.position = coordinate;
-    marker.map = _mapView;
+    
 }
 
 #pragma mark - Initalization
@@ -111,7 +133,7 @@ didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate
 {
     if (!_closeButton) {
         _closeButton = [UIButton newAutoLayoutView];
-        [_closeButton setImage:[UIImage imageNamed:@"close.png"] forState:UIControlStateNormal];
+        [_closeButton setImage:[UIImage imageNamed:@"closebutton.png"] forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(closePage) forControlEvents:UIControlEventTouchUpInside];
     }
     

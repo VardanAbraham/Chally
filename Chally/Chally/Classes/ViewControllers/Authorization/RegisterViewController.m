@@ -19,14 +19,12 @@
 
 @interface RegisterViewController () <GPPSignInDelegate>
 
-@property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImageView *challyLogoImageView;
 @property (nonatomic, strong) UIImageView *alphaImageView;
 @property (nonatomic, strong) UIButton *facebookBtn;
 @property (nonatomic, strong) UIButton *googleBtn;
 @property (nonatomic, strong) UIButton *signInBtn;
 @property (nonatomic, strong) UIButton *signUpBtn;
-@property (nonatomic, strong) UILabel *bottomBtnConnetnViewLabel;
 @property (nonatomic, strong) UIButton *privicyBtn;
 @property (nonatomic, strong) UIButton *termsBtn;
 
@@ -52,7 +50,11 @@
 
 - (void)addAllUIObjects
 {
-    [self.view addSubview:self.backgroundImageView];
+    UIImageView *backgroundImageView = [UIImageView newAutoLayoutView];
+    [self.view addSubview:backgroundImageView];
+    [backgroundImageView setImage:[UIImage imageNamed:@"Register_background.png"]];
+    [backgroundImageView autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0,0, 0, 0)];
+
     [self.view addSubview:self.challyLogoImageView];
     [self.view addSubview:self.alphaImageView];
     [self.view addSubview:self.facebookBtn];
@@ -60,7 +62,6 @@
     
     [self.view addSubview:self.signInBtn];
     [self.view addSubview:self.signUpBtn];
-    [self.view addSubview:self.bottomBtnConnetnViewLabel];
     [self.view addSubview:self.privicyBtn];
     [self.view addSubview:self.termsBtn];
 }
@@ -136,14 +137,9 @@
 
 - (void)setConstraints
 {
-    [self.backgroundImageView autoPinEdgeToSuperviewEdge:ALEdgeTop];
-    [self.backgroundImageView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
-    [self.backgroundImageView autoPinEdgeToSuperviewEdge:ALEdgeRight];
-    [self.backgroundImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
-    
-    [self.challyLogoImageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:44.0];
+    [self.challyLogoImageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:RC_LOGO_INSET];
     [self.challyLogoImageView autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [self.challyLogoImageView autoSetDimensionsToSize:CGSizeMake(100, 30)];
+    [self.challyLogoImageView autoSetDimensionsToSize:RC_LOGO_SIZE];
     
     [self.alphaImageView autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:self.view.frame.size.height*0.3];
     [self.alphaImageView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
@@ -152,25 +148,33 @@
 
     [self.facebookBtn autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:Social_Buttons_Position];
     [self.facebookBtn autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [self.facebookBtn autoSetDimensionsToSize:CGSizeMake(192.0 , 42)];
+    [self.facebookBtn autoSetDimensionsToSize:CGSizeMake(RC_BUTTON_WIDTH , RC_BUTTON_HEIGHT)];
     
-    [self.googleBtn autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.facebookBtn withOffset:15.0];
+    [self.googleBtn autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.facebookBtn withOffset:RC_OFFSET];
     [self.googleBtn autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [self.googleBtn autoSetDimensionsToSize:CGSizeMake(192 , 42)];
+    [self.googleBtn autoSetDimensionsToSize:CGSizeMake(RC_BUTTON_WIDTH , RC_BUTTON_HEIGHT)];
     
-    [self.bottomBtnConnetnViewLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
-    [self.bottomBtnConnetnViewLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.googleBtn withOffset:15.0];
+    UILabel *bottomBtnConnetnViewLabel = [UILabel newAutoLayoutView];
+    [self.view addSubview:bottomBtnConnetnViewLabel];
+
+    [bottomBtnConnetnViewLabel setBackgroundColor:[UIColor clearColor]];
+    [bottomBtnConnetnViewLabel setTextColor:[UIColor whiteColor]];
+    [bottomBtnConnetnViewLabel setText:@"or"];
+    [bottomBtnConnetnViewLabel setFont:OPENSANS_LIGHT];
+
+    [bottomBtnConnetnViewLabel autoAlignAxisToSuperviewAxis:ALAxisVertical];
+    [bottomBtnConnetnViewLabel autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.googleBtn withOffset:RC_OFFSET];
     
-    [self.signInBtn autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:self.bottomBtnConnetnViewLabel withOffset:-5.0];
-    [self.signUpBtn autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:self.bottomBtnConnetnViewLabel withOffset:5.0];
-    [self.signInBtn autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.bottomBtnConnetnViewLabel];
-    [self.signUpBtn autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.bottomBtnConnetnViewLabel];
+    [self.signInBtn autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:bottomBtnConnetnViewLabel withOffset:-5.0];
+    [self.signUpBtn autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:bottomBtnConnetnViewLabel withOffset:5.0];
+    [self.signInBtn autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bottomBtnConnetnViewLabel];
+    [self.signUpBtn autoAlignAxis:ALAxisHorizontal toSameAxisOfView:bottomBtnConnetnViewLabel];
     
     UIView *verticalLineView = [UIView newAutoLayoutView];
     [self.view addSubview:verticalLineView];
     [verticalLineView setBackgroundColor:[UIColor whiteColor]];
     [verticalLineView autoSetDimensionsToSize:CGSizeMake(1.0, 16)];
-    [verticalLineView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:15.0];
+    [verticalLineView autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:RC_OFFSET];
     [verticalLineView autoAlignAxisToSuperviewAxis:ALAxisVertical];
     
     [self.termsBtn autoPinEdge:ALEdgeRight toEdge:ALEdgeLeft ofView:verticalLineView withOffset:-5.0];
@@ -182,31 +186,7 @@
 
 #pragma mark - Initializations
 
-- (UILabel *)bottomBtnConnetnViewLabel
-{
-    if (!_bottomBtnConnetnViewLabel) {
-        _bottomBtnConnetnViewLabel = [UILabel newAutoLayoutView];
-        [_bottomBtnConnetnViewLabel setBackgroundColor:[UIColor clearColor]];
-        [_bottomBtnConnetnViewLabel setTextColor:[UIColor whiteColor]];
-        [_bottomBtnConnetnViewLabel setTextAlignment:NSTextAlignmentCenter];
-        [_bottomBtnConnetnViewLabel setText:@"or"];
-        [_bottomBtnConnetnViewLabel setFont:OPENSANS_LIGHT];
-    }
-    
-    return _bottomBtnConnetnViewLabel;
-}
-
-- (UIImageView *)backgroundImageView
-{
-    if (!_backgroundImageView) {
-        _backgroundImageView = [UIImageView newAutoLayoutView];
-        [_backgroundImageView setImage:[UIImage imageNamed:@"Register_background.png"]];
-    }
-    
-    return _backgroundImageView;
-}
-
- - (UIImageView *)challyLogoImageView
+- (UIImageView *)challyLogoImageView
 {
     if (!_challyLogoImageView) {
         _challyLogoImageView = [UIImageView newAutoLayoutView];
@@ -253,7 +233,7 @@
     if (!_signInBtn) {
         _signInBtn = [UIButton newAutoLayoutView];
         [_signInBtn setTitle:@"SIGN IN" forState:UIControlStateNormal];
-        [_signInBtn.titleLabel setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:13]];
+        [_signInBtn.titleLabel setFont:OPENSANS_SEMIBOLD];
         [_signInBtn addTarget:self action:@selector(openSignInPage:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _signInBtn;
@@ -264,7 +244,7 @@
     if (!_signUpBtn) {
         _signUpBtn = [UIButton newAutoLayoutView];
         [_signUpBtn setTitle:@"SIGN UP" forState:UIControlStateNormal];
-        [_signUpBtn.titleLabel setFont:[UIFont fontWithName:@"OpenSans-Semibold" size:13]];
+        [_signUpBtn.titleLabel setFont:OPENSANS_SEMIBOLD];
 
         [_signUpBtn addTarget:self action:@selector(openSignUpPage:) forControlEvents:UIControlEventTouchUpInside];
     }

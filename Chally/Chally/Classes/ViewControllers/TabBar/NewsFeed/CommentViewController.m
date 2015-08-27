@@ -108,7 +108,6 @@ CGFloat _keyboardHeight = 224.0f;
 {
     refreshControl = [UIRefreshControl newAutoLayoutView];
     refreshControl.backgroundColor = [UIColor whiteColor];
-    refreshControl.tintColor = GRAY_17;
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
 }

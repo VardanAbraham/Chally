@@ -68,7 +68,7 @@
     if (!_textView) {
         _textView = [UITextView newAutoLayoutView];
         [_textView setEditable:NO];
-        [_textView setTextColor:GRAY_17];
+        [_textView setTextColor:GRAY];
         [_textView setFont:SITEXTFONT];
         [_textView setTextAlignment:NSTextAlignmentCenter];
         [_textView setSelectable:NO];

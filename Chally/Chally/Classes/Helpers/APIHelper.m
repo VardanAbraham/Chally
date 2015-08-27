@@ -71,24 +71,24 @@
     }];
 }
 
-- (void)curlFunctionWithUrl:(NSString*)URL
-{
-    NSString *myString=URL;
-    NSRange range = [URL rangeOfString:@"?" options:NSBackwardsSearch range:NSMakeRange(0, URL.length)];
-    NSString *dataString = [myString substringFromIndex:range.location+1];
-    NSString *url = [myString substringToIndex:range.location ];
-    NSString *auth = [NSString stringWithFormat:@" --header \"Client-Type: %@\" --header \"Client-Version: 0.1\"", [Utils getDeviceType]];
-    if ([Utils getAuthToken]) {
-        auth =  [auth stringByAppendingString:[NSString stringWithFormat:@" --header \"Authorization: %@\"", [Utils getAuthToken]]];
-    }
-    NSString *xdebug = @" --data 'XDEBUG_SESSION_START=hive'";
-    NSString *post = @"";
-    if (dataString) {
-        post = [NSString stringWithFormat:@" --data '%@'", dataString];
-    }
-    NSString *curl = [NSString stringWithFormat:@"curl -X POST \"%@\"%@%@%@",url, post,xdebug,auth];
-    NSLog(@"%@", curl);
-}
+//- (void)curlFunctionWithUrl:(NSString*)URL
+//{
+//    NSString *myString=URL;
+//    NSRange range = [URL rangeOfString:@"?" options:NSBackwardsSearch range:NSMakeRange(0, URL.length)];
+//    NSString *dataString = [myString substringFromIndex:range.location+1];
+//    NSString *url = [myString substringToIndex:range.location ];
+//    NSString *auth = [NSString stringWithFormat:@" --header \"Client-Type: %@\" --header \"Client-Version: 0.1\"", [Utils getDeviceType]];
+//    if ([Utils getAuthToken]) {
+//        auth =  [auth stringByAppendingString:[NSString stringWithFormat:@" --header \"Authorization: %@\"", [Utils getAuthToken]]];
+//    }
+//    NSString *xdebug = @" --data 'XDEBUG_SESSION_START=hive'";
+//    NSString *post = @"";
+//    if (dataString) {
+//        post = [NSString stringWithFormat:@" --data '%@'", dataString];
+//    }
+//    NSString *curl = [NSString stringWithFormat:@"curl -X POST \"%@\"%@%@%@",url, post,xdebug,auth];
+//    NSLog(@"%@", curl);
+//}
 
 - (BOOL)checkResponseStatus:(id)responseObject {
     

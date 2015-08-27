@@ -25,6 +25,8 @@
 
 @end
 
+static NSString *feedCellIdentifier = @"feedCell";
+
 @implementation NewsFeedViewController
 
 - (void)viewDidLoad
@@ -110,7 +112,6 @@
 
 }
 
-
 - (void)openCommentsView:(UIButton *)button
 {
     CommentViewController *commentsVC = [CommentViewController new];
@@ -129,12 +130,7 @@
     int imageNumber = ceil(slider.value/2) == 0 ? 1 : ceil(slider.value/2);
     
     UIImage * toImage =  [UIImage imageNamed:[NSString stringWithFormat:@"Emoticon%i.png",imageNumber]];
-    [UIView transitionWithView:rateVC.smileImageView
-                      duration:0.20f
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{
-                        rateVC.smileImageView.image = toImage;
-                    } completion:nil];
+    rateVC.smileImageView.image = toImage;
 
     [rateVC.rateLabel setText:[NSString stringWithFormat:@"%.01f", ceil(slider.value)]];
 }
@@ -148,16 +144,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"feedCell";
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:feedCellIdentifier];
 
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
     [cell.challangeDescriptionLabel setText:@"Lorem ispum dolor sit amet, #constectur adipsicing elit, sed do, eiusmid tempor incidudnt ut labor et dolore magna aliqua ut enim ad"];
     [cell.locationButton setTitle:@"Yerevan, Armenia" forState:UIControlStateNormal];
-    [cell.challangeImageView setImageWithURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/7UOSFN1OOF0/maxresdefault.jpg"]];
-    [cell.avatarButton setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:@"https://pbs.twimg.com/profile_images/1817180934/new_Profile_pic_400x400.jpg"]];
+    [cell.challangeImageView setImage:[UIImage imageNamed:@"feedImg"]];
+    [cell.avatarButton setImage:[UIImage imageNamed:@"avatar.png"] forState:UIControlStateNormal];
     [cell.avatarButton addTarget:self action:@selector(openUserProfile:) forControlEvents:UIControlEventTouchUpInside];
     
     [cell.raitingButton addTarget:self action:@selector(showRateView:) forControlEvents:UIControlEventTouchUpInside];
@@ -190,9 +182,10 @@
         [_tableView setDataSource:self];
         _tableView.multipleTouchEnabled = NO;
         _tableView.allowsMultipleSelection = NO;
+        _tableView.rowHeight = UITableViewAutomaticDimension;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableView setBackgroundColor:[UIColor lightGrayColor]];
-        [_tableView registerClass:[FeedCell class] forCellReuseIdentifier:@"feedCell"];
+        [_tableView registerClass:[FeedCell class] forCellReuseIdentifier:feedCellIdentifier];
     }
     return _tableView;
 }

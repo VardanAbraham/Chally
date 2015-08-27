@@ -10,18 +10,21 @@
 
 @interface ExploreViewController ()
 
+
 @end
 
 @implementation ExploreViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
     
     [self.tabBarController setTitle:@"Explore"];
 }

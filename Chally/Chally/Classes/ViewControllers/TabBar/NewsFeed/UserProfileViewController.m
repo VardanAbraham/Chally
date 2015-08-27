@@ -23,6 +23,8 @@
 
 @end
 
+static NSString *userCellIdentifier = @"userCell";
+
 @implementation UserProfileViewController
 
 - (void)viewDidLoad
@@ -43,7 +45,6 @@
 {
     [super viewWillAppear:animated];
     
-    [self setNavigationBarLeftButton];
     [self.navigationItem setTitle:@"UserProfile"];
 }
 
@@ -81,21 +82,6 @@
 
 #pragma mark - Custom methods
 
-- (void)setNavigationBarLeftButton
-{
-    UIView *leftView = [[UIView alloc]  initWithFrame:CGRectMake(0, 0, 71, 33)];
-    [leftView setBackgroundColor:[UIColor clearColor]];
-    UIButton *leftNavigationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftNavigationButton setFrame:CGRectMake(0, 0, 81, 33)];
-    [leftNavigationButton addTarget:self action:@selector(popCurrentViewController:) forControlEvents:UIControlEventTouchUpInside];
-    [leftNavigationButton setImage:[UIImage imageNamed:@"backImage.png"] forState:UIControlStateNormal];
-    [leftNavigationButton setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 5)];
-    [leftNavigationButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
-    [leftView addSubview:leftNavigationButton];
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftView];
-    [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
-}
-
 - (void)addUIObjects
 {
     [self.view addSubview:self.tableView];
@@ -112,7 +98,6 @@
 {
     refreshControl = [UIRefreshControl newAutoLayoutView];
     refreshControl.backgroundColor = [UIColor whiteColor];
-    refreshControl.tintColor = GRAY_17;
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
 }
@@ -132,14 +117,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"feedCell";
-    
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:userCellIdentifier];
     [cell.challangeDescriptionLabel setText:@"Lorem ispum dolor sit amet, #constectur adipsicing elit, sed do, eiusmid tempor incidudnt ut labor et dolore magna aliqua ut enim ad" ];
     [cell.locationButton setTitle:@"Yerevan, Armenia" forState:UIControlStateNormal];
-    [cell.challangeImageView setImageWithURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/7UOSFN1OOF0/maxresdefault.jpg"]];
-    [cell.avatarButton setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:@"https://pbs.twimg.com/profile_images/1817180934/new_Profile_pic_400x400.jpg"]];
+    [cell.challangeImageView setImage:[UIImage imageNamed:@"feedImg"]];
+    [cell.avatarButton setImage:[UIImage imageNamed:@"avatar.png"] forState:UIControlStateNormal];
     
     return cell;
 }
@@ -171,7 +153,7 @@
     [self.buttonsView autoPinEdgeToSuperviewEdge:ALEdgeBottom];
     [self.buttonsView autoPinEdgeToSuperviewEdge:ALEdgeLeft];
     [self.buttonsView autoPinEdgeToSuperviewEdge:ALEdgeRight];
-    [self.buttonsView autoSetDimension:ALDimensionHeight toSize:50.0];
+    [self.buttonsView autoSetDimension:ALDimensionHeight toSize:PS_BV_HEIGHT];
     
     [self.chalangesBtn autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:1.0];
     [self.chalangesBtn autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:1.0];
@@ -200,6 +182,7 @@
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
         [_tableView setBackgroundColor:[UIColor whiteColor]];
+        [_tableView registerClass:[FeedCell class] forCellReuseIdentifier:userCellIdentifier];
     }
     return _tableView;
 }

@@ -25,6 +25,9 @@
 
 @end
 
+static NSString *profileCellIdentifier = @"profileCell";
+
+
 @implementation MyProfileViewController
 
 - (void)viewDidLoad
@@ -34,6 +37,12 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self addUIObjects];
     [self addRefreshControl];
+    
+    __strong typeof(self) weakSelf = self;
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf.tableView.infiniteScrollingView stopAnimating];
+    }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -92,7 +101,6 @@
 {
     refreshControl = [UIRefreshControl newAutoLayoutView];
     refreshControl.backgroundColor = [UIColor whiteColor];
-    refreshControl.tintColor = GRAY_17;
     [refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
     [self.tableView addSubview:refreshControl];
 }
@@ -125,15 +133,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"feedCell";
-    
-    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[FeedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
+    FeedCell *cell = [tableView dequeueReusableCellWithIdentifier:profileCellIdentifier];
     [cell.challangeDescriptionLabel setText:@"Lorem ispum dolor sit amet, #constectur adipsicing elit, sed do, eiusmid tempor incidudnt ut labor et dolore magna aliqua ut enim ad"];
     [cell.locationButton setTitle:@"Yerevan, Armenia" forState:UIControlStateNormal];
-    [cell.challangeImageView setImageWithURL:[NSURL URLWithString:@"http://i.ytimg.com/vi/7UOSFN1OOF0/maxresdefault.jpg"]];
+    [cell.challangeImageView setImage:[UIImage imageNamed:@"feedImg"]];
     [cell.avatarButton setImageForState:UIControlStateNormal withURL:[NSURL URLWithString:@"https://pbs.twimg.com/profile_images/1817180934/new_Profile_pic_400x400.jpg"]];
     
     return cell;
@@ -202,6 +205,7 @@
         [_tableView setDelegate:self];
         [_tableView setDataSource:self];
         [_tableView setBackgroundColor:[UIColor whiteColor]];
+        [_tableView registerClass:[FeedCell class] forCellReuseIdentifier:profileCellIdentifier];
     }
     return _tableView;
 }

@@ -87,7 +87,7 @@
     UINavigationController * navigationCOntroller = (UINavigationController *)viewController;
     if ([navigationCOntroller.viewControllers[0] isKindOfClass:[CreateChallangeViewController class]]) {
         self.lastVCIndex = [tabBarController.viewControllers indexOfObject:tabBarController.selectedViewController];
-        [self.tabBar setHidden:YES];
+        [self changeTabBarState:NO];
     }
     
     return YES;
@@ -95,8 +95,18 @@
 
 - (void)showTabBar
 {
-    [self.tabBar setHidden:NO];
+    [self changeTabBarState:YES];
     [self setSelectedIndex:self.lastVCIndex];
+}
+
+- (void)changeTabBarState:(BOOL)show
+{
+    CGFloat height = self.tabBar.frame.size.height;
+    CGFloat offsetY = show? -height : height;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.tabBar.frame = CGRectOffset(self.tabBar.frame, 0, offsetY);
+    } completion:nil];
 }
 
 @end
